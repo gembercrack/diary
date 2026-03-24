@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>digital diary — print edition</title>
+
+<style>
+@font-face {
+    font-family: 'Jokker';
+    src: url('Jokker-TRIAL-Medium.otf') format('opentype');
+    font-weight: 500;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jokker', sans-serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: white;
+}
+
+.columns-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.column {
+    flex: 1;
+    padding: 28px;
+}
+
+.label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.editable {
+    border: 1px solid #e2e2e2;
+    padding: 12px;
+    min-height: 40px;
+}
+
+.editable:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.thoughts {
+    min-height: 200px;
+}
+
+.button-print {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid #111;
+    background: white;
+    cursor: pointer;
+}
+
+@media print {
+
+    .button-print {
+        display: none;
+    }
+
+    .columns-container {
+        display: block;
+    }
+
+    .column {
+        width: 100%;
+        padding: 0;
+    }
+
+    .editable {
+        border: none;
+        padding: 0;
+    }
+
+    body {
+        padding: 0.7in;
+        font-size: 12pt;
+    }
+
+    .label {
+        margin-top: 16px;
+        font-weight: 500;
+    }
+
+    .thoughts {
+        white-space: pre-wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="columns-container">
+
+    <div class="column">
+        <div class="label">date</div>
+        <div class="editable" contenteditable="true">
+            24 March 2026
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="label">where</div>
+        <div class="editable" contenteditable="true">
+            Rotterdam
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="label">thoughts</div>
+        <div class="editable thoughts" contenteditable="true">
+            what are you thinking about
+        </div>
+
+        <button class="button-print" onclick="window.print()">
+           print diary
+        </button>
+    </div>
+
+</div>
+
+</body>
+</html>
